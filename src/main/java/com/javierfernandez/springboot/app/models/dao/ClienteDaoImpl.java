@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import java.util.List;
 
-@Repository
+@Repository("clienteDaoJPA")
 public class ClienteDaoImpl implements ICLienteDao{
 
     @PersistenceContext
