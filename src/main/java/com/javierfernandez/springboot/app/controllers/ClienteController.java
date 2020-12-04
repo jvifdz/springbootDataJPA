@@ -6,9 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.validation.Valid;
 import java.util.Map;
 
 @Controller
@@ -36,7 +39,19 @@ public class ClienteController {
 
 
     @RequestMapping(value = "/form", method = RequestMethod.POST)
-    public String guardar (Cliente cliente){
+    public String guardar (@Valid /*@ModelAttribute("cliente")*/ Cliente cliente, BindingResult result, Model model){
+        //si tiene errores volvemos a la vista formulario
+        //y volvemos a pasar el titulo
+        //no pasamos cliente por que lo pasa automaticamente pero debe llamarese ela clase Cliente
+        //no importa la mayus
+        //igual que como lo pasas a la vista arriba en el put ("cliente")
+        //sino se indica en el @ModelAtribute
+        if (result.hasErrors()){
+            model.addAttribute("titulo","Formulario del Cliente");
+
+            return "form";
+        }
+
         clienteDao.save(cliente);
         return "redirect:listar";
     }
