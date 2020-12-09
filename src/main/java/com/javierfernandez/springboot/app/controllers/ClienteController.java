@@ -2,7 +2,7 @@ package com.javierfernandez.springboot.app.controllers;
 
 
 import com.javierfernandez.springboot.app.models.entity.Cliente;
-import com.javierfernandez.springboot.app.service.ICLienteService;
+import com.javierfernandez.springboot.app.models.service.ICLienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;

@@ -1,4 +1,4 @@
-package com.javierfernandez.springboot.app.service;
+package com.javierfernandez.springboot.app.models.service;
 
 import com.javierfernandez.springboot.app.models.dao.ICLienteDao;
 import com.javierfernandez.springboot.app.models.entity.Cliente;
