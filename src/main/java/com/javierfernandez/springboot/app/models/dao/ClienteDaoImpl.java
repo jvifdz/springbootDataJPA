@@ -22,6 +22,12 @@ public class ClienteDaoImpl implements ICLienteDao{
     }
 
     @Override
+    @Transactional(readOnly = true)
+    public Cliente findOne(Long id) {
+        return em.find(Cliente.class,id);
+    }
+
+    @Override
     @Transactional
     public void save(Cliente cliente) {
 
@@ -33,7 +39,10 @@ public class ClienteDaoImpl implements ICLienteDao{
     }
 
     @Override
-    public Cliente findOne(Long id) {
-        return em.find(Cliente.class,id);
+    @Transactional
+    public void delete(Long id) {
+        /*Cliente cliente = findOne(id);
+        em.remove(cliente);*/
+        em.remove(findOne(id));
     }
 }
